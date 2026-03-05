@@ -7793,7 +7793,216 @@ a.anchor-link {
     white-space: normal;
   }
 </style>
-<!-- End of mermaid configuration --></head>
+<!-- End of mermaid configuration -->
+<!-- ===== Custom Professional Styling (non-destructive) ===== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ========== Design tokens ========== */
+  :root{
+    --bg: #f6f8fb;
+    --surface: #ffffff;
+    --surface-2: #f1f5f9;
+    --text: #0f172a;
+    --muted: #475569;
+    --border: rgba(15, 23, 42, 0.12);
+    --shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+    --shadow-sm: 0 6px 16px rgba(2, 6, 23, 0.06);
+    --radius: 18px;
+    --radius-sm: 12px;
+    --accent: #2563eb;     /* blue */
+    --accent-2: #0ea5e9;   /* sky */
+    --good: #16a34a;
+    --warn: #f59e0b;
+    --bad: #ef4444;
+  }
+
+  /* ========== Base ========== */
+  html, body { height: 100%; }
+  body{
+    margin: 0;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+    color: var(--text);
+    background:
+      radial-gradient(1200px 500px at 10% 0%, rgba(37,99,235,0.10), transparent 55%),
+      radial-gradient(900px 500px at 90% 10%, rgba(14,165,233,0.10), transparent 60%),
+      var(--bg);
+  }
+
+  main{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 28px 18px 52px;
+  }
+
+  /* Improve overall readability */
+  a{ color: var(--accent); text-decoration: none; }
+  a:hover{ text-decoration: underline; }
+
+  /* ========== Notebook cell as cards ========== */
+  .jp-Notebook-cell, .jp-Cell{
+    margin: 16px 0 !important;
+  }
+
+  .jp-Cell{
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+  }
+
+  /* Give Markdown and outputs consistent padding */
+  .jp-Cell-inputWrapper,
+  .jp-Cell-outputWrapper{
+    padding: 18px 18px 16px;
+  }
+
+  /* Slightly differentiate markdown vs outputs */
+  .jp-MarkdownCell .jp-Cell-inputWrapper{
+    background:
+      linear-gradient(90deg, rgba(37,99,235,0.10), transparent 65%),
+      var(--surface);
+    border-bottom: 1px solid rgba(15,23,42,0.06);
+  }
+
+  /* If input areas exist, keep them but make them visually calmer */
+  .jp-InputArea, .jp-OutputArea{
+    border-radius: var(--radius-sm);
+  }
+
+  /* ========== Typography ========== */
+  .jp-RenderedMarkdown, .jp-RenderedHTMLCommon{
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text);
+  }
+
+  .jp-RenderedMarkdown p{
+    margin: 0.55rem 0;
+    color: var(--muted);
+  }
+
+  .jp-RenderedMarkdown h1{
+    font-size: 30px;
+    line-height: 1.15;
+    margin: 0.2rem 0 0.9rem;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+
+  .jp-RenderedMarkdown h2{
+    font-size: 22px;
+    margin: 1.2rem 0 0.6rem;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+
+  .jp-RenderedMarkdown h3{
+    font-size: 18px;
+    margin: 1.0rem 0 0.4rem;
+    color: var(--text);
+  }
+
+  .jp-RenderedMarkdown ul, .jp-RenderedMarkdown ol{
+    margin: 0.6rem 0 0.8rem 1.25rem;
+    color: var(--muted);
+  }
+
+  .jp-RenderedMarkdown code{
+    background: rgba(2,6,23,0.06);
+    border: 1px solid rgba(2,6,23,0.08);
+    border-radius: 8px;
+    padding: 0.08rem 0.38rem;
+    font-size: 0.92em;
+    color: var(--text);
+  }
+
+  .jp-RenderedMarkdown blockquote{
+    margin: 0.9rem 0;
+    padding: 0.2rem 0.9rem;
+    border-left: 4px solid rgba(37,99,235,0.55);
+    background: rgba(37,99,235,0.06);
+    color: var(--muted);
+    border-radius: 10px;
+  }
+
+  /* ========== Pre / console outputs ========== */
+  .jp-RenderedText pre, pre{
+    background: #0b1220;
+    color: #e5e7eb;
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 14px;
+    padding: 14px 16px;
+    overflow: auto;
+    line-height: 1.5;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04);
+  }
+
+  /* ========== Tables ========== */
+  .jp-RenderedHTMLCommon{
+    overflow-x: auto;
+  }
+
+  table{
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    min-width: 680px;
+  }
+
+  thead th{
+    position: sticky;
+    top: 0;
+    background: linear-gradient(180deg, rgba(241,245,249,0.96), rgba(241,245,249,0.92));
+    color: var(--text);
+    font-weight: 700;
+    border-bottom: 1px solid var(--border);
+    padding: 10px 12px;
+    text-align: left;
+    z-index: 2;
+  }
+
+  tbody td, tbody th{
+    border-bottom: 1px solid rgba(15,23,42,0.08);
+    padding: 10px 12px;
+    color: var(--muted);
+    vertical-align: top;
+  }
+
+  tbody tr:nth-child(odd){
+    background: rgba(2,6,23,0.02);
+  }
+
+  tbody tr:hover{
+    background: rgba(37,99,235,0.06);
+  }
+
+  /* Reduce the visual noise of Jupyter UI affordances */
+  .jp-Collapser,
+  .jp-Cell-inputCollapser,
+  .jp-Cell-outputCollapser{
+    opacity: 0.35;
+  }
+
+  /* ========== Responsive tweaks ========== */
+  @media (max-width: 720px){
+    main{ padding: 18px 12px 40px; }
+    .jp-Cell-inputWrapper, .jp-Cell-outputWrapper{ padding: 14px 14px 12px; }
+    .jp-RenderedMarkdown h1{ font-size: 26px; }
+    table{ min-width: 560px; }
+  }
+
+  @media print{
+    body{ background: #fff; }
+    main{ max-width: 100%; padding: 0; }
+    .jp-Cell{ box-shadow: none; border-radius: 0; }
+    .jp-RenderedText pre{ background: #fff; color: #000; border: 1px solid #ddd; }
+  }
+</style>
+
+</head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0f22b37c-5cf7-4a03-9792-b9c0bdc7b318">
@@ -7801,7 +8010,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Dashboard-Prototype-%E2%80%94-Hito-2">Dashboard Prototype — Hito 2<a class="anchor-link" href="#Dashboard-Prototype-%E2%80%94-Hito-2">¶</a></h1><p>Este notebook es un prototipo academico de tablero de seguimiento para el Hito 2.</p>
+<h1 id="Dashboard-Prototype-%E2%80%94-Hito-2">Dashboard Prototype<a class="anchor-link" href="#Dashboard-Prototype-%E2%80%94-Hito-2">¶</a></h1><p>Este notebook es un prototipo academico de tablero de seguimiento para el Hito 2.</p>
 </div>
 </div>
 </div>
