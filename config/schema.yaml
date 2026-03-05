@@ -1,0 +1,369 @@
+# ============================================================================
+# DATA SCHEMA & VALIDATION RULES
+# Define expected column names, dtypes, and quality thresholds
+# ============================================================================
+
+schemas:
+  # Schema for quarterly IIOC data
+  iioc_quarterly:
+    description: "Quarterly construction cost index"
+    columns:
+      date:
+        dtype: "datetime64[ns]"
+        required: true
+        null_threshold: 0.0  # No nulls allowed
+        unique: false
+      year:
+        dtype: "int64"
+        required: true
+        null_threshold: 0.0
+        unique: false
+        validation:
+          range: [1990, 2100]
+          non_negative: true
+      quarter:
+        dtype: "int64"
+        required: true
+        null_threshold: 0.0
+        unique: false
+        validation:
+          range: [1, 4]
+      indicator:
+        dtype: "object"
+        required: true
+        null_threshold: 0.0
+        unique: false
+      value:
+        dtype: "float64"
+        required: true
+        null_threshold: 0.05  # Allow max 5% nulls
+        unique: false
+        validation:
+          non_negative: true
+          range: [0, 10000]  # Reasonable range for indices
+      source:
+        dtype: "object"
+        required: true
+        null_threshold: 0.0
+        unique: false
+      unit:
+        dtype: "object"
+        required: true
+        null_threshold: 0.0
+        unique: false
+      frequency:
+        dtype: "object"
+        required: false
+        allowed_values: ["Trimestral", "Mensual", "Anual"]
+
+  # Schema for monthly GEIH employment data
+  geih_monthly:
+    description: "Monthly labor force survey employment"
+    columns:
+      date:
+        dtype: "datetime64[ns]"
+        required: true
+        null_threshold: 0.0
+      year:
+        dtype: "int64"
+        required: true
+        null_threshold: 0.0
+        validation:
+          range: [1990, 2100]
+      month:
+        dtype: "int64"
+        required: true
+        null_threshold: 0.0
+        validation:
+          range: [1, 12]
+      indicator:
+        dtype: "object"
+        required: true
+        null_threshold: 0.0
+      value:
+        dtype: "float64"
+        required: true
+        null_threshold: 0.05
+        validation:
+          non_negative: true
+          range: [0, 50000]  # Thousands of persons
+      source:
+        dtype: "object"
+        required: true
+      unit:
+        dtype: "object"
+        required: true
+
+  # Schema for annual fiscal spending
+  fiscal_annual:
+    description: "Annual fiscal spending data"
+    columns:
+      date:
+        dtype: "datetime64[ns]"
+        required: true
+        null_threshold: 0.0
+      year:
+        dtype: "int64"
+        required: true
+        null_threshold: 0.0
+        validation:
+          range: [1990, 2100]
+      indicator:
+        dtype: "object"
+        required: true
+        null_threshold: 0.0
+      value:
+        dtype: "float64"
+        required: true
+        null_threshold: 0.1
+        validation:
+          non_negative: true
+          range: [0, 10000000]  # Millions
+      source:
+        dtype: "object"
+        required: true
+      unit:
+        dtype: "object"
+        required: true
+      frequency:
+        dtype: "object"
+        required: true
+
+  # Schema for logistics index
+  logistics_annual:
+    description: "Annual logistics performance indicators"
+    columns:
+      date:
+        dtype: "datetime64[ns]"
+        required: true
+        null_threshold: 0.0
+      year:
+        dtype: "int64"
+        required: true
+        null_threshold: 0.0
+        validation:
+          range: [2007, 2100]  # LPI starts 2007
+      indicator:
+        dtype: "object"
+        required: true
+        null_threshold: 0.0
+      value:
+        dtype: "float64"
+        required: true
+        null_threshold: 0.1
+        validation:
+          range: [1, 5]  # LPI scale
+      source:
+        dtype: "object"
+        required: true
+      unit:
+        dtype: "object"
+        required: true
+      frequency:
+        dtype: "object"
+        required: true
+
+  # Unified schema for tidy silver tables
+  silver_tidy:
+    description: "Standardized long-format dataset"
+    grain: "(date, indicator)"
+    columns:
+      date:
+        dtype: "datetime64[ns]"
+        required: true
+        null_threshold: 0.0
+      indicator:
+        dtype: "object"
+        required: true
+        null_threshold: 0.0
+      value:
+        dtype: "float64"
+        required: true
+        null_threshold: 0.05
+      source:
+        dtype: "object"
+        required: true
+      unit:
+        dtype: "object"
+        required: true
+      frequency:
+        dtype: "object"
+        required: true
+
+  # Gold: National Panel (one row per year with key metrics)
+  gold_national_panel:
+    description: "Yearly panel with key indicators"
+    grain: "year"
+    columns:
+      year:
+        dtype: "int64"
+        required: true
+        unique: true
+        null_threshold: 0.0
+      fbcf_avg:
+        dtype: "float64"
+        required: false
+        null_threshold: 0.2
+      geih_avg:
+        dtype: "float64"
+        required: false
+        null_threshold: 0.2
+      iioc_avg:
+        dtype: "float64"
+        required: false
+        null_threshold: 0.2
+      gasto_const_avg:
+        dtype: "float64"
+        required: false
+        null_threshold: 0.2
+      lpi_score:
+        dtype: "float64"
+        required: false
+        null_threshold: 0.5
+
+  # Gold: Metrics Summary
+  gold_metrics_summary:
+    description: "Feature engineered metrics with growth rates and lags"
+    grain: "(date, indicator)"
+    columns:
+      date:
+        dtype: "datetime64[ns]"
+        required: true
+        null_threshold: 0.0
+      indicator:
+        dtype: "object"
+        required: true
+        null_threshold: 0.0
+      value:
+        dtype: "float64"
+        required: true
+        null_threshold: 0.05
+      value_pct_change:
+        dtype: "float64"
+        required: false
+        null_threshold: 0.5
+      value_ma_3:
+        dtype: "float64"
+        required: false
+        null_threshold: 0.5
+      value_ma_12:
+        dtype: "float64"
+        required: false
+        null_threshold: 0.5
+      lag_1:
+        dtype: "float64"
+        required: false
+        null_threshold: 0.5
+      lag_3:
+        dtype: "float64"
+        required: false
+        null_threshold: 0.5
+      structural_break_flag:
+        dtype: "int64"
+        required: false
+        null_threshold: 1.0
+
+  # Gold: Dimension Tables
+  dim_time:
+    description: "Time dimension"
+    columns:
+      period_id:
+        dtype: "int64"
+        required: true
+        unique: true
+      year:
+        dtype: "int64"
+        required: true
+      quarter:
+        dtype: "int64"
+        required: false
+      month:
+        dtype: "int64"
+        required: false
+      period_label:
+        dtype: "object"
+        required: true
+
+  dim_indicator:
+    description: "Indicator dimension"
+    columns:
+      indicator_id:
+        dtype: "object"
+        required: true
+        unique: true
+      description:
+        dtype: "object"
+        required: true
+      unit:
+        dtype: "object"
+        required: true
+      source:
+        dtype: "object"
+        required: true
+      frequency:
+        dtype: "object"
+        required: true
+
+  fact_indicators:
+    description: "Fact table for indicators"
+    grain: "(period_id, indicator_id)"
+    columns:
+      period_id:
+        dtype: "int64"
+        required: true
+      indicator_id:
+        dtype: "object"
+        required: true
+      value:
+        dtype: "float64"
+        required: true
+
+# Global validation rules
+validation_rules:
+  uniqueness:
+    - table: "indicators_tidy"
+      columns: ["date", "indicator"]
+      description: "No duplicate (date, indicator) pairs"
+    - table: "national_panel"
+      columns: ["year"]
+      description: "One row per year"
+    - table: "dim_time"
+      columns: ["period_id"]
+      description: "Unique period IDs"
+    - table: "dim_indicator"
+      columns: ["indicator_id"]
+      description: "Unique indicator IDs"
+    - table: "fact_indicators"
+      columns: ["period_id", "indicator_id"]
+      description: "Unique fact combinations"
+
+  time_consistency:
+    check_monotonic_dates: true
+    check_no_duplicate_periods: true
+    expected_frequencies: ["Trimestral", "Mensual", "Anual"]
+    max_gap_quarters: 4
+    max_gap_months: 12
+    max_gap_years: 2
+
+  outlier_detection:
+    method: "iqr"
+    threshold: 3.0
+    action: "flag"
+    per_indicator: true
+
+  missing_data:
+    per_column_threshold: 0.10
+    per_indicator_threshold: 0.20
+    critical_indicators: ["inv_pib", "empleo_const", "pib_const", "iioc", "gasto_const"]
+
+  consistency_checks:
+    - name: "gdp_construction_vs_iioc"
+      description: "Construction GDP should correlate with IIOC index"
+      indicators: ["pib_const", "iioc"]
+      method: "correlation"
+      min_correlation: 0.3
+    - name: "investment_vs_employment"
+      description: "Investment should lead employment changes"
+      indicators: ["inv_pib", "empleo_const"]
+      method: "granger_causality"
+      max_p_value: 0.1

@@ -1,0 +1,82 @@
+2026-03-05 20:52:08 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-03-05 20:52:08 - clean - INFO - Parsing FBCF AN112 from anex-GastoConstantes-IVtrim2025.xlsx
+2026-03-05 20:52:09 - clean - INFO - ✅ FBCF parsed
+2026-03-05 20:52:09 - clean - INFO - Parsing GEIH from anexo-mercado-laboral-segun-proyecciones-CNPV2018.xlsx
+2026-03-05 20:52:09 - clean - INFO - ✅ GEIH parsed
+2026-03-05 20:52:09 - clean - ERROR - ❌ SILVER stage failed: parse_iioc_anexo_a3() takes 1 positional argument but 2 were given
+Traceback (most recent call last):
+  File "C:\Users\sebas\OneDrive\Escritorio\proyecto_seminario\src\etl\clean.py", line 217, in main
+    dfs.append(parse_iioc_anexo_a3(f_iioc, logger))
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+TypeError: parse_iioc_anexo_a3() takes 1 positional argument but 2 were given
+2026-03-05 20:52:32 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-03-05 20:52:32 - clean - INFO - Parsing FBCF AN112 from anex-GastoConstantes-IVtrim2025.xlsx
+2026-03-05 20:52:33 - clean - INFO - ✅ FBCF parsed
+2026-03-05 20:52:33 - clean - INFO - Parsing GEIH from anexo-mercado-laboral-segun-proyecciones-CNPV2018.xlsx
+2026-03-05 20:52:33 - clean - INFO - ✅ GEIH parsed
+2026-03-05 20:52:33 - clean - ERROR - ❌ SILVER stage failed: parse_iioc_anexo_a3() takes 1 positional argument but 2 were given
+Traceback (most recent call last):
+  File "C:\Users\sebas\OneDrive\Escritorio\proyecto_seminario\src\etl\clean.py", line 217, in main
+    dfs.append(parse_iioc_anexo_a3(f_iioc, logger))
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+TypeError: parse_iioc_anexo_a3() takes 1 positional argument but 2 were given
+2026-03-05 20:53:13 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-03-05 20:53:13 - clean - INFO - Parsing FBCF AN112 from anex-GastoConstantes-IVtrim2025.xlsx
+2026-03-05 20:53:13 - clean - INFO - ✅ FBCF parsed
+2026-03-05 20:53:13 - clean - INFO - Parsing GEIH from anexo-mercado-laboral-segun-proyecciones-CNPV2018.xlsx
+2026-03-05 20:53:13 - clean - INFO - ✅ GEIH parsed
+2026-03-05 20:53:13 - clean - INFO - Parsing IIOC Anexo A3 from anexos_IIOC_IVtrim20.xlsx
+2026-03-05 20:53:13 - clean - ERROR - ❌ SILVER stage failed: name 'Q_MAP' is not defined
+Traceback (most recent call last):
+  File "C:\Users\sebas\OneDrive\Escritorio\proyecto_seminario\src\etl\clean.py", line 218, in main
+    dfs.append(parse_iioc_anexo_a3(f_iioc, logger))
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\sebas\OneDrive\Escritorio\proyecto_seminario\src\etl\clean.py", line 182, in parse_iioc_anexo_a3
+    sub["quarter"] = sub["quarter"].astype(str).str.strip().map(Q_MAP)
+                                                                ^^^^^
+NameError: name 'Q_MAP' is not defined
+2026-03-05 20:53:42 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-03-05 20:53:42 - clean - INFO - Parsing FBCF AN112 from anex-GastoConstantes-IVtrim2025.xlsx
+2026-03-05 20:53:42 - clean - INFO - ✅ FBCF parsed
+2026-03-05 20:53:42 - clean - INFO - Parsing GEIH from anexo-mercado-laboral-segun-proyecciones-CNPV2018.xlsx
+2026-03-05 20:53:42 - clean - INFO - ✅ GEIH parsed
+2026-03-05 20:53:42 - clean - INFO - Parsing IIOC Anexo A3 from anexos_IIOC_IVtrim20.xlsx
+2026-03-05 20:53:42 - clean - INFO - ✅ IIOC parsed
+2026-03-05 20:53:43 - clean - INFO - ✅ Saved to C:\Users\sebas\OneDrive\Escritorio\proyecto_seminario\data\processed\indicators_tidy.csv
+2026-03-05 20:53:43 - clean - INFO - ✅ Saved to C:\Users\sebas\OneDrive\Escritorio\proyecto_seminario\data\silver\indicators_tidy.parquet
+2026-03-05 20:53:43 - clean - INFO - Indicators: 8
+2026-03-05 20:53:43 - clean - INFO - Date range: 1999-03-31 00:00:00 to 2023-12-31 00:00:00
+2026-03-05 21:37:52 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-03-05 21:37:52 - clean - INFO - Parsing FBCF AN112 from anex-GastoConstantes-IVtrim2025.xlsx
+2026-03-05 21:37:53 - clean - INFO - ✅ FBCF parsed
+2026-03-05 21:37:53 - clean - INFO - Parsing GEIH from anexo-mercado-laboral-segun-proyecciones-CNPV2018.xlsx
+2026-03-05 21:37:53 - clean - INFO - ✅ GEIH parsed
+2026-03-05 21:37:53 - clean - INFO - Parsing IIOC Anexo A3 from anexos_IIOC_IVtrim20.xlsx
+2026-03-05 21:37:53 - clean - INFO - ✅ IIOC parsed
+2026-03-05 21:37:53 - clean - INFO - ✅ Saved to C:\Users\sebas\OneDrive\Escritorio\proyecto_seminario\data\processed\indicators_tidy.csv
+2026-03-05 21:37:53 - clean - INFO - ✅ Saved to C:\Users\sebas\OneDrive\Escritorio\proyecto_seminario\data\silver\indicators_tidy.parquet
+2026-03-05 21:37:53 - clean - INFO - Indicators: 8
+2026-03-05 21:37:53 - clean - INFO - Date range: 1999-03-31 00:00:00 to 2023-12-31 00:00:00
+2026-03-05 21:38:45 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-03-05 21:38:45 - clean - INFO - Parsing FBCF AN112 from anex-GastoConstantes-IVtrim2025.xlsx
+2026-03-05 21:38:45 - clean - INFO - ✅ FBCF parsed
+2026-03-05 21:38:45 - clean - INFO - Parsing GEIH from anexo-mercado-laboral-segun-proyecciones-CNPV2018.xlsx
+2026-03-05 21:38:46 - clean - INFO - ✅ GEIH parsed
+2026-03-05 21:38:46 - clean - INFO - Parsing IIOC Anexo A3 from anexos_IIOC_IVtrim20.xlsx
+2026-03-05 21:38:46 - clean - INFO - ✅ IIOC parsed
+2026-03-05 21:38:46 - clean - INFO - ✅ Saved to C:\Users\sebas\OneDrive\Escritorio\proyecto_seminario\data\processed\indicators_tidy.csv
+2026-03-05 21:38:46 - clean - INFO - ✅ Saved to C:\Users\sebas\OneDrive\Escritorio\proyecto_seminario\data\silver\indicators_tidy.parquet
+2026-03-05 21:38:46 - clean - INFO - Indicators: 8
+2026-03-05 21:38:46 - clean - INFO - Date range: 1999-03-31 00:00:00 to 2023-12-31 00:00:00
+2026-03-05 22:04:02 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-03-05 22:04:03 - clean - ERROR - Failed to parse fbcf_investment: ['year', 'quarter']
+2026-03-05 22:04:03 - clean - ERROR - Failed to parse geih_construction_employment: ['year', 'month']
+2026-03-05 22:04:03 - clean - ERROR - Failed to parse iioc_construction_cost_index: ['year', 'quarter']
+2026-03-05 22:04:03 - clean - ERROR - Failed to parse fiscal_spending_constants: ['year', 'quarter']
+2026-03-05 22:04:03 - clean - WARNING - File C:\Users\sebas\OneDrive\Escritorio\proyecto_seminario\data\raw\logistics_data.xlsx not found, skipping logistics_performance_index
+2026-03-05 22:04:03 - clean - WARNING - File C:\Users\sebas\OneDrive\Escritorio\proyecto_seminario\data\raw\infrastructure_projects.xlsx not found, skipping infrastructure_investment_projects
+2026-03-05 22:04:03 - clean - ERROR - Failed to parse construction_production_value: ['year', 'quarter']
+2026-03-05 22:04:03 - clean - WARNING - No data parsed
+2026-03-05 22:04:38 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-03-05 22:04:38 - clean - INFO - Parsing FBCF AN112 from anex-GastoConstantes-IVtrim2025.xlsx
+2026-03-05 22:08:03 - clean - INFO - SILVER STAGE: Cleaning and standardizing data

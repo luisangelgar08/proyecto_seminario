@@ -1,0 +1,30 @@
+2026-03-05 22:08:03,829 - pipeline - INFO - 
+======================================================================
+2026-03-05 22:08:03,829 - pipeline - INFO - STARTING COMPLETE PIPELINE
+2026-03-05 22:08:03,829 - pipeline - INFO - ======================================================================
+
+2026-03-05 22:08:03,830 - ingest - INFO - ======================================================================
+2026-03-05 22:08:03,831 - ingest - INFO - STAGE: BRONZE INGESTION
+2026-03-05 22:08:03,831 - ingest - INFO - ======================================================================
+2026-03-05 22:08:03,833 - ingest - WARNING - No files found with config patterns; falling back to default Excel patterns
+2026-03-05 22:08:03,834 - ingest - INFO - discover_raw_files found 3 files using patterns ['*.xlsx', '*.xls']
+2026-03-05 22:08:03,834 - ingest - INFO - Found 3 raw data files
+2026-03-05 22:08:03,837 - ingest - INFO - Cataloged: anex-GastoConstantes-IVtrim2025.xlsx (484,041 bytes)
+2026-03-05 22:08:03,865 - ingest - INFO - Cataloged: anexo-mercado-laboral-segun-proyecciones-CNPV2018.xlsx (7,556,793 bytes)
+2026-03-05 22:08:03,870 - ingest - INFO - Cataloged: anexos_IIOC_IVtrim20.xlsx (279,217 bytes)
+2026-03-05 22:08:03,893 - ingest - INFO - Manifest saved: reports\raw_manifest.csv
+2026-03-05 22:08:03,895 - ingest - INFO - Ingestion complete: 3 files cataloged
+2026-03-05 22:08:03,896 - ingest - INFO - ======================================================================
+2026-03-05 22:08:03,903 - pipeline.bronze - INFO - ✅ BRONZE stage completed
+2026-03-05 22:08:03,904 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-03-05 22:08:03,907 - pipeline.silver - ERROR - ❌ SILVER stage failed: 'file_path'
+Traceback (most recent call last):
+  File "C:\Users\sebas\OneDrive\Escritorio\proyecto_seminario\src\pipeline.py", line 65, in run_silver
+    clean.main()
+    ~~~~~~~~~~^^
+  File "C:\Users\sebas\OneDrive\Escritorio\proyecto_seminario\src\etl\clean.py", line 306, in main
+    df = parse_source(source, logger)
+  File "C:\Users\sebas\OneDrive\Escritorio\proyecto_seminario\src\etl\clean.py", line 101, in parse_source
+    file_path = RAW / source['file_path']
+                      ~~~~~~^^^^^^^^^^^^^
+KeyError: 'file_path'

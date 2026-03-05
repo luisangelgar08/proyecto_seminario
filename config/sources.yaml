@@ -1,0 +1,4 @@
+
+sources:
+  - name: TEST
+    file_pattern: '*.abc'
