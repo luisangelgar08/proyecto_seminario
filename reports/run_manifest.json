@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-03-05T22:08:03.894304",
+  "timestamp": "2026-04-09T15:03:54.962702",
   "stage": "bronze_ingest",
-  "files_discovered": 3,
+  "files_discovered": 4,
   "manifest_file": "reports/raw_manifest.csv"
 }
