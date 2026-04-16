@@ -1,0 +1,3 @@
+spec,difference,nobs,stable,aic,bic,hqic,fpe,irf_method,status,error
+var_levels_lag1,False,23,True,15.959266058249964,16.255481940666265,16.033763522403756,8556959.246100754,standard_irf,ok,
+var_diff1_lag1,True,22,True,17.059311727068646,17.35686875980273,17.12940721664778,25718750.44174533,standard_irf,ok,

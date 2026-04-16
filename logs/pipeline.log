@@ -1,24 +1,25 @@
-2026-04-09 15:03:54,788 - pipeline - INFO - 
+2026-04-16 07:02:51,634 - pipeline - INFO - Building reports...
+2026-04-16 07:02:51,635 - pipeline - INFO - 
 ======================================================================
-2026-04-09 15:03:54,788 - pipeline - INFO - STARTING COMPLETE PIPELINE
-2026-04-09 15:03:54,789 - pipeline - INFO - ======================================================================
+2026-04-16 07:02:51,635 - pipeline - INFO - STARTING COMPLETE PIPELINE
+2026-04-16 07:02:51,635 - pipeline - INFO - ======================================================================
 
-2026-04-09 15:03:54,790 - ingest - INFO - ======================================================================
-2026-04-09 15:03:54,791 - ingest - INFO - STAGE: BRONZE INGESTION
-2026-04-09 15:03:54,791 - ingest - INFO - ======================================================================
-2026-04-09 15:03:54,795 - ingest - WARNING - No files found with config patterns; falling back to default Excel patterns
-2026-04-09 15:03:54,800 - ingest - INFO - discover_raw_files found 4 files using patterns ['*.xlsx', '*.xls']
-2026-04-09 15:03:54,800 - ingest - INFO - Found 4 raw data files
-2026-04-09 15:03:54,814 - ingest - INFO - Cataloged: anex-GastoConstantes-IVtrim2025.xlsx (484,041 bytes)
-2026-04-09 15:03:54,934 - ingest - INFO - Cataloged: anexo-mercado-laboral-segun-proyecciones-CNPV2018.xlsx (7,556,793 bytes)
-2026-04-09 15:03:54,943 - ingest - INFO - Cataloged: anexos_IIOC_IVtrim20.xlsx (279,217 bytes)
-2026-04-09 15:03:54,948 - ingest - INFO - Cataloged: ipoc_2020_2024.xlsx (5,669 bytes)
-2026-04-09 15:03:54,962 - ingest - INFO - Manifest saved: reports/raw_manifest.csv
-2026-04-09 15:03:54,965 - ingest - INFO - Ingestion complete: 4 files cataloged
-2026-04-09 15:03:54,966 - ingest - INFO - ======================================================================
-2026-04-09 15:03:54,970 - pipeline.bronze - INFO - ✅ BRONZE stage completed
-2026-04-09 15:03:54,971 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
-2026-04-09 15:03:54,974 - pipeline.silver - ERROR - ❌ SILVER stage failed: 'file_path'
+2026-04-16 07:02:51,637 - ingest - INFO - ======================================================================
+2026-04-16 07:02:51,637 - ingest - INFO - STAGE: BRONZE INGESTION
+2026-04-16 07:02:51,637 - ingest - INFO - ======================================================================
+2026-04-16 07:02:51,641 - ingest - WARNING - No files found with config patterns; falling back to default Excel patterns
+2026-04-16 07:02:51,646 - ingest - INFO - discover_raw_files found 4 files using patterns ['*.xlsx', '*.xls']
+2026-04-16 07:02:51,646 - ingest - INFO - Found 4 raw data files
+2026-04-16 07:02:51,657 - ingest - INFO - Cataloged: anex-GastoConstantes-IVtrim2025.xlsx (484,041 bytes)
+2026-04-16 07:02:51,777 - ingest - INFO - Cataloged: anexo-mercado-laboral-segun-proyecciones-CNPV2018.xlsx (7,556,793 bytes)
+2026-04-16 07:02:51,785 - ingest - INFO - Cataloged: anexos_IIOC_IVtrim20.xlsx (279,217 bytes)
+2026-04-16 07:02:51,789 - ingest - INFO - Cataloged: ipoc_2020_2024.xlsx (5,669 bytes)
+2026-04-16 07:02:51,870 - ingest - INFO - Manifest saved: reports/raw_manifest.csv
+2026-04-16 07:02:51,873 - ingest - INFO - Ingestion complete: 4 files cataloged
+2026-04-16 07:02:51,873 - ingest - INFO - ======================================================================
+2026-04-16 07:02:51,923 - pipeline.bronze - INFO - ✅ BRONZE stage completed
+2026-04-16 07:02:51,925 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-04-16 07:02:51,927 - pipeline.silver - ERROR - ❌ SILVER stage failed: 'file_path'
 Traceback (most recent call last):
   File "/mnt/d/Universidad/Seminario/proyecto_seminario/src/pipeline.py", line 65, in run_silver
     clean.main()
@@ -29,3 +30,70 @@ Traceback (most recent call last):
     file_path = RAW / source['file_path']
                       ~~~~~~^^^^^^^^^^^^^
 KeyError: 'file_path'
+2026-04-16 07:02:51,935 - quality - INFO - QUALITY STAGE: Running advanced checks
+2026-04-16 07:02:52,295 - pipeline.quality - ERROR - ❌ QUALITY stage failed: 'indicator_id'
+Traceback (most recent call last):
+  File "/mnt/d/Universidad/Seminario/proyecto_seminario/.venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'indicator_id'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/d/Universidad/Seminario/proyecto_seminario/src/pipeline.py", line 145, in run_quality
+    quality.main()
+    ~~~~~~~~~~~~^^
+  File "/mnt/d/Universidad/Seminario/proyecto_seminario/src/etl/quality.py", line 180, in main
+    results['overall_consistency'] = check_consistency(tidy_df)
+                                     ~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/mnt/d/Universidad/Seminario/proyecto_seminario/src/etl/quality.py", line 114, in check_consistency
+    if 'inv_pib' in df['indicator_id'].values and 'iioc' in df['indicator_id'].values:
+                    ~~^^^^^^^^^^^^^^^^
+  File "/mnt/d/Universidad/Seminario/proyecto_seminario/.venv/lib/python3.13/site-packages/pandas/core/frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/mnt/d/Universidad/Seminario/proyecto_seminario/.venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'indicator_id'
+2026-04-16 07:02:52,325 - pipeline - INFO - ✅ Reports generated in reports/
+2026-04-16 07:13:31 - ingest - INFO - ======================================================================
+2026-04-16 07:13:31 - ingest - INFO - STAGE: BRONZE INGESTION
+2026-04-16 07:13:31 - ingest - INFO - ======================================================================
+2026-04-16 07:13:31 - ingest - WARNING - No files found with config patterns; falling back to default Excel patterns
+2026-04-16 07:13:31 - ingest - INFO - discover_raw_files found 4 files using patterns ['*.xlsx', '*.xls']
+2026-04-16 07:13:31 - ingest - INFO - Found 4 raw data files
+2026-04-16 07:13:31 - ingest - INFO - Cataloged: anex-GastoConstantes-IVtrim2025.xlsx (484,041 bytes)
+2026-04-16 07:13:31 - ingest - INFO - Cataloged: anexo-mercado-laboral-segun-proyecciones-CNPV2018.xlsx (7,556,793 bytes)
+2026-04-16 07:13:31 - ingest - INFO - Cataloged: anexos_IIOC_IVtrim20.xlsx (279,217 bytes)
+2026-04-16 07:13:31 - ingest - INFO - Cataloged: ipoc_2020_2024.xlsx (5,669 bytes)
+2026-04-16 07:13:31 - ingest - INFO - Manifest saved: reports/raw_manifest.csv
+2026-04-16 07:13:31 - ingest - INFO - Ingestion complete: 4 files cataloged
+2026-04-16 07:13:31 - ingest - INFO - ======================================================================
+2026-04-16 07:41:31 - ingest - INFO - ======================================================================
+2026-04-16 07:41:31 - ingest - INFO - STAGE: BRONZE INGESTION
+2026-04-16 07:41:31 - ingest - INFO - ======================================================================
+2026-04-16 07:41:31 - ingest - INFO - discover_raw_files found 4 files using patterns ['ipoc_2020_2024.xlsx', 'anexo-mercado-laboral-segun-proyecciones-CNPV2018.xlsx', 'anexos_IIOC_IVtrim20.xlsx', 'anex-GastoConstantes-IVtrim2025.xlsx']
+2026-04-16 07:41:31 - ingest - INFO - Found 4 raw data files
+2026-04-16 07:41:31 - ingest - INFO - Cataloged: anex-GastoConstantes-IVtrim2025.xlsx (484,041 bytes)
+2026-04-16 07:41:31 - ingest - INFO - Cataloged: anexo-mercado-laboral-segun-proyecciones-CNPV2018.xlsx (7,556,793 bytes)
+2026-04-16 07:41:31 - ingest - INFO - Cataloged: anexos_IIOC_IVtrim20.xlsx (279,217 bytes)
+2026-04-16 07:41:31 - ingest - INFO - Cataloged: ipoc_2020_2024.xlsx (5,669 bytes)
+2026-04-16 07:41:32 - ingest - INFO - Manifest saved: reports/raw_manifest.csv
+2026-04-16 07:41:32 - ingest - INFO - Ingestion complete: 4 files cataloged
+2026-04-16 07:41:32 - ingest - INFO - ======================================================================
+2026-04-16 07:47:44 - ingest - INFO - ======================================================================
+2026-04-16 07:47:44 - ingest - INFO - STAGE: BRONZE INGESTION
+2026-04-16 07:47:44 - ingest - INFO - ======================================================================
+2026-04-16 07:47:44 - ingest - INFO - discover_raw_files found 4 files using patterns ['ipoc_2020_2024.xlsx', 'anexo-mercado-laboral-segun-proyecciones-CNPV2018.xlsx', 'anexos_IIOC_IVtrim20.xlsx', 'anex-GastoConstantes-IVtrim2025.xlsx']
+2026-04-16 07:47:44 - ingest - INFO - Found 4 raw data files
+2026-04-16 07:47:44 - ingest - INFO - Cataloged: anex-GastoConstantes-IVtrim2025.xlsx (484,041 bytes)
+2026-04-16 07:47:44 - ingest - INFO - Cataloged: anexo-mercado-laboral-segun-proyecciones-CNPV2018.xlsx (7,556,793 bytes)
+2026-04-16 07:47:44 - ingest - INFO - Cataloged: anexos_IIOC_IVtrim20.xlsx (279,217 bytes)
+2026-04-16 07:47:44 - ingest - INFO - Cataloged: ipoc_2020_2024.xlsx (5,669 bytes)
+2026-04-16 07:47:45 - ingest - INFO - Manifest saved: reports/raw_manifest.csv
+2026-04-16 07:47:45 - ingest - INFO - Ingestion complete: 4 files cataloged
+2026-04-16 07:47:45 - ingest - INFO - ======================================================================

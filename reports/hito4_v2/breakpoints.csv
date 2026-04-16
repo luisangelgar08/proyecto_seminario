@@ -1,0 +1,7 @@
+variable,break_number,break_index,break_date
+iioc_total,1,5,2016-06-30 23:59:59.999999
+iioc_total,2,10,2017-09-30 23:59:59.999999
+iioc_total,3,15,2018-12-31 23:59:59.999999
+empleo_construccion,1,5,2016-06-30 23:59:59.999999
+empleo_construccion,2,10,2017-09-30 23:59:59.999999
+empleo_construccion,3,15,2018-12-31 23:59:59.999999

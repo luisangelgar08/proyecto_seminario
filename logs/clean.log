@@ -81,3 +81,154 @@ NameError: name 'Q_MAP' is not defined
 2026-03-05 22:04:38 - clean - INFO - Parsing FBCF AN112 from anex-GastoConstantes-IVtrim2025.xlsx
 2026-03-05 22:08:03 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
 2026-04-09 15:03:54 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-04-16 06:57:05 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-04-16 06:57:30 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-04-16 07:02:51 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-04-16 07:15:11 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-04-16 07:41:47 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-04-16 07:41:47 - clean - INFO - Parsing FBCF AN112 from ipoc_2020_2024.xlsx
+2026-04-16 07:47:02 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-04-16 07:47:02 - clean - INFO - Parsing FBCF AN112 from ipoc_2020_2024.xlsx
+2026-04-16 07:47:52 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-04-16 07:47:52 - clean - INFO - Parsing FBCF AN112 from ipoc_2020_2024.xlsx
+2026-04-16 07:48:28 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-04-16 07:48:28 - clean - INFO - Parsing FBCF AN112 from ipoc_2020_2024.xlsx
+2026-04-16 07:55:42 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-04-16 07:55:42 - clean - INFO - Parsing IPOC quarterly data from ipoc_2020_2024.xlsx
+2026-04-16 07:57:39 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-04-16 07:57:39 - clean - INFO - Parsing IPOC quarterly data from ipoc_2020_2024.xlsx
+2026-04-16 07:57:44 - clean - INFO - Saved ipoc_quarterly to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/ipoc_quarterly.parquet
+2026-04-16 07:57:44 - clean - INFO - Parsing GEIH from anexo-mercado-laboral-segun-proyecciones-CNPV2018.xlsx
+2026-04-16 07:59:45 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-04-16 07:59:45 - clean - INFO - Parsing IPOC quarterly data from ipoc_2020_2024.xlsx
+2026-04-16 07:59:47 - clean - INFO - Saved ipoc_quarterly to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/ipoc_quarterly.parquet
+2026-04-16 07:59:47 - clean - INFO - Parsing GEIH from anexo-mercado-laboral-segun-proyecciones-CNPV2018.xlsx
+2026-04-16 07:59:47 - clean - INFO - Parsing IIOC Anexo A3 from anexos_IIOC_IVtrim20.xlsx
+2026-04-16 08:00:54 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-04-16 08:00:54 - clean - INFO - Parsing IPOC quarterly data from ipoc_2020_2024.xlsx
+2026-04-16 08:00:56 - clean - INFO - Saved ipoc_quarterly to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/ipoc_quarterly.parquet
+2026-04-16 08:00:56 - clean - INFO - Parsing GEIH from anexo-mercado-laboral-segun-proyecciones-CNPV2018.xlsx
+2026-04-16 08:00:56 - clean - INFO - Parsing IIOC Anexo A3 from anexos_IIOC_IVtrim20.xlsx
+2026-04-16 08:00:56 - clean - INFO - Saved iioc_construction_cost_index to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/iioc_construction_cost_index.parquet
+2026-04-16 08:00:57 - clean - ERROR - Failed to parse fiscal_spending_constants: Worksheet named 'Sheet1' not found
+2026-04-16 08:00:57 - clean - INFO - ✅ Unified tidy saved to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/indicators_tidy.parquet
+2026-04-16 08:00:57 - clean - INFO - Indicators: 1
+2026-04-16 08:00:57 - clean - INFO - Date range: 1999-03-31 00:00:00 to 2024-12-31 23:59:59.999999
+2026-04-16 08:16:03 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-04-16 08:16:03 - clean - INFO - Parsing IPOC quarterly data from ipoc_2020_2024.xlsx
+2026-04-16 08:16:05 - clean - INFO - Saved ipoc_quarterly to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/ipoc_quarterly.parquet
+2026-04-16 08:16:05 - clean - INFO - Parsing GEIH from anexo-mercado-laboral-segun-proyecciones-CNPV2018.xlsx
+2026-04-16 08:16:05 - clean - INFO - Parsing IIOC Anexo A3 from anexos_IIOC_IVtrim20.xlsx
+2026-04-16 08:16:05 - clean - INFO - Saved iioc_construction_cost_index to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/iioc_construction_cost_index.parquet
+2026-04-16 08:16:05 - clean - ERROR - Failed to parse fiscal_spending_constants: Worksheet named 'Sheet1' not found
+2026-04-16 08:16:05 - clean - INFO - ✅ Unified tidy saved to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/indicators_tidy.parquet
+2026-04-16 08:16:05 - clean - INFO - Indicators: 1
+2026-04-16 08:16:05 - clean - INFO - Date range: 1999-03-31 00:00:00 to 2024-12-31 23:59:59.999999
+2026-04-16 08:22:45 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-04-16 08:22:45 - clean - INFO - Parsing IPOC quarterly data from ipoc_2020_2024.xlsx
+2026-04-16 08:22:50 - clean - INFO - Saved ipoc_quarterly to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/ipoc_quarterly.parquet
+2026-04-16 08:22:50 - clean - INFO - Parsing GEIH from anexo-mercado-laboral-segun-proyecciones-CNPV2018.xlsx
+2026-04-16 08:22:50 - clean - INFO - Parsing IIOC Anexo A3 from anexos_IIOC_IVtrim20.xlsx
+2026-04-16 08:22:50 - clean - INFO - Saved iioc_construction_cost_index to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/iioc_construction_cost_index.parquet
+2026-04-16 08:22:50 - clean - ERROR - Failed to parse fiscal_spending_constants: Worksheet named 'Sheet1' not found
+2026-04-16 08:22:50 - clean - INFO - ✅ Unified tidy saved to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/indicators_tidy.parquet
+2026-04-16 08:22:50 - clean - INFO - Indicators: 1
+2026-04-16 08:22:50 - clean - INFO - Date range: 1999-03-31 00:00:00 to 2024-12-31 23:59:59.999999
+2026-04-16 08:24:13 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-04-16 08:24:13 - clean - INFO - Parsing IPOC quarterly data from ipoc_2020_2024.xlsx
+2026-04-16 08:24:14 - clean - INFO - Saved ipoc_quarterly to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/ipoc_quarterly.parquet
+2026-04-16 08:24:14 - clean - INFO - Parsing GEIH from anexo-mercado-laboral-segun-proyecciones-CNPV2018.xlsx
+2026-04-16 08:24:15 - clean - INFO - Parsing IIOC Anexo A3 from anexos_IIOC_IVtrim20.xlsx
+2026-04-16 08:24:15 - clean - INFO - Saved iioc_construction_cost_index to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/iioc_construction_cost_index.parquet
+2026-04-16 08:24:15 - clean - ERROR - Failed to parse fiscal_spending_constants: Worksheet named 'Sheet1' not found
+2026-04-16 08:24:15 - clean - INFO - ✅ Unified tidy saved to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/indicators_tidy.parquet
+2026-04-16 08:24:15 - clean - INFO - Indicators: 6
+2026-04-16 08:24:15 - clean - INFO - Date range: 1999-03-31 00:00:00 to 2024-12-31 23:59:59.999999
+2026-04-16 08:29:35 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-04-16 08:29:35 - clean - INFO - Parsing IPOC quarterly data from ipoc_2020_2024.xlsx
+2026-04-16 08:29:37 - clean - INFO - Saved ipoc_quarterly to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/ipoc_quarterly.parquet
+2026-04-16 08:29:37 - clean - INFO - Parsing GEIH from anexo-mercado-laboral-segun-proyecciones-CNPV2018.xlsx
+2026-04-16 08:29:37 - clean - INFO - Parsing IIOC Anexo A3 from anexos_IIOC_IVtrim20.xlsx
+2026-04-16 08:29:37 - clean - INFO - Saved iioc_construction_cost_index to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/iioc_construction_cost_index.parquet
+2026-04-16 08:29:37 - clean - WARNING - Using placeholder parser for fiscal_spending_constants
+2026-04-16 08:29:37 - clean - INFO - ✅ Unified tidy saved to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/indicators_tidy.parquet
+2026-04-16 08:29:37 - clean - INFO - Indicators: 6
+2026-04-16 08:29:37 - clean - INFO - Date range: 1999-03-31 00:00:00 to 2024-12-31 23:59:59.999999
+2026-04-16 08:40:54 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-04-16 08:40:54 - clean - INFO - Parsing IPOC quarterly data from ipoc_2020_2024.xlsx
+2026-04-16 08:40:56 - clean - INFO - Saved ipoc_quarterly to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/ipoc_quarterly.parquet
+2026-04-16 08:40:56 - clean - INFO - Parsing GEIH from anexo-mercado-laboral-segun-proyecciones-CNPV2018.xlsx
+2026-04-16 08:40:56 - clean - INFO - Parsing IIOC Anexo A3 from anexos_IIOC_IVtrim20.xlsx
+2026-04-16 08:40:56 - clean - INFO - Saved iioc_construction_cost_index to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/iioc_construction_cost_index.parquet
+2026-04-16 08:40:56 - clean - WARNING - Using placeholder parser for fiscal_spending_constants
+2026-04-16 08:40:56 - clean - INFO - ✅ Unified tidy saved to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/indicators_tidy.parquet
+2026-04-16 08:40:56 - clean - INFO - Indicators: 6
+2026-04-16 08:40:56 - clean - INFO - Date range: 1999-03-31 00:00:00 to 2024-12-31 23:59:59.999999
+2026-04-16 08:42:09 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-04-16 08:42:09 - clean - INFO - Parsing IPOC quarterly data from ipoc_2020_2024.xlsx
+2026-04-16 08:42:10 - clean - INFO - Saved ipoc_quarterly to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/ipoc_quarterly.parquet
+2026-04-16 08:42:10 - clean - INFO - Parsing GEIH from anexo-mercado-laboral-segun-proyecciones-CNPV2018.xlsx
+2026-04-16 08:42:11 - clean - INFO - Parsing IIOC Anexo A3 from anexos_IIOC_IVtrim20.xlsx
+2026-04-16 08:42:11 - clean - INFO - Saved iioc_construction_cost_index to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/iioc_construction_cost_index.parquet
+2026-04-16 08:42:11 - clean - WARNING - Using placeholder parser for fiscal_spending_constants
+2026-04-16 08:42:11 - clean - INFO - ✅ Unified tidy saved to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/indicators_tidy.parquet
+2026-04-16 08:42:11 - clean - INFO - Indicators: 6
+2026-04-16 08:42:11 - clean - INFO - Date range: 1999-03-31 00:00:00 to 2024-12-31 23:59:59.999999
+2026-04-16 08:50:41 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-04-16 08:50:41 - clean - INFO - Parsing IPOC quarterly data from ipoc_2020_2024.xlsx
+2026-04-16 08:50:43 - clean - INFO - Saved ipoc_quarterly to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/ipoc_quarterly.parquet
+2026-04-16 08:50:43 - clean - INFO - Parsing GEIH from anexo-mercado-laboral-segun-proyecciones-CNPV2018.xlsx
+2026-04-16 08:50:43 - clean - INFO - GEIH parsed rows: 0
+2026-04-16 08:50:43 - clean - INFO - Parsing IIOC Anexo A3 from anexos_IIOC_IVtrim20.xlsx
+2026-04-16 08:50:43 - clean - INFO - Saved iioc_construction_cost_index to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/iioc_construction_cost_index.parquet
+2026-04-16 08:50:43 - clean - WARNING - Using placeholder parser for fiscal_spending_constants
+2026-04-16 08:50:44 - clean - INFO - ✅ Unified tidy saved to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/indicators_tidy.parquet
+2026-04-16 08:50:44 - clean - INFO - Indicators: 6
+2026-04-16 08:50:44 - clean - INFO - Date range: 1999-03-31 00:00:00 to 2024-12-31 23:59:59.999999
+2026-04-16 08:56:00 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-04-16 08:56:00 - clean - INFO - Parsing IPOC quarterly data from ipoc_2020_2024.xlsx
+2026-04-16 08:56:02 - clean - INFO - Saved ipoc_quarterly to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/ipoc_quarterly.parquet
+2026-04-16 08:56:02 - clean - INFO - Parsing GEIH from anexo-mercado-laboral-segun-proyecciones-CNPV2018.xlsx
+2026-04-16 08:57:56 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-04-16 08:57:56 - clean - INFO - Parsing IPOC quarterly data from ipoc_2020_2024.xlsx
+2026-04-16 08:57:58 - clean - INFO - Saved ipoc_quarterly to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/ipoc_quarterly.parquet
+2026-04-16 08:57:58 - clean - INFO - Parsing GEIH from anexo-mercado-laboral-segun-proyecciones-CNPV2018.xlsx
+2026-04-16 08:59:59 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-04-16 08:59:59 - clean - INFO - Parsing IPOC quarterly data from ipoc_2020_2024.xlsx
+2026-04-16 09:00:01 - clean - INFO - Saved ipoc_quarterly to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/ipoc_quarterly.parquet
+2026-04-16 09:00:01 - clean - INFO - Parsing GEIH from anexo-mercado-laboral-segun-proyecciones-CNPV2018.xlsx
+2026-04-16 09:00:01 - clean - INFO - GEIH parsed rows: 0
+2026-04-16 09:00:01 - clean - INFO - GEIH hoja usada: ocup ramas mes tnal CIIU 4
+2026-04-16 09:00:01 - clean - INFO - GEIH year_row: 12, month_row: 13
+2026-04-16 09:00:01 - clean - INFO - GEIH months sample: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic']
+2026-04-16 09:00:01 - clean - INFO - GEIH month_num sample: [nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan]
+2026-04-16 09:00:01 - clean - INFO - GEIH valid columns: 0
+2026-04-16 09:00:01 - clean - INFO - GEIH data shape: (22, 1)
+2026-04-16 09:00:01 - clean - INFO - GEIH concept sample: ['ocupados total nacional', 'no informa', 'agricultura, ganadería, caza, silvicultura y pesca', 'suministro de electricidad gas y agua^', 'industria manufacturera', 'construcción', 'comercio y reparación de vehículos', 'alojamiento y servicios de comida', 'transporte y almacenamiento', 'información y comunicaciones']
+2026-04-16 09:00:01 - clean - INFO - GEIH constru matches: 1
+2026-04-16 09:00:01 - clean - INFO - Parsing IIOC Anexo A3 from anexos_IIOC_IVtrim20.xlsx
+2026-04-16 09:00:01 - clean - INFO - Saved iioc_construction_cost_index to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/iioc_construction_cost_index.parquet
+2026-04-16 09:00:01 - clean - WARNING - Using placeholder parser for fiscal_spending_constants
+2026-04-16 09:00:01 - clean - INFO - ✅ Unified tidy saved to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/indicators_tidy.parquet
+2026-04-16 09:00:01 - clean - INFO - Indicators: 6
+2026-04-16 09:00:01 - clean - INFO - Date range: 1999-03-31 00:00:00 to 2024-12-31 23:59:59.999999
+2026-04-16 09:01:24 - clean - INFO - SILVER STAGE: Cleaning and standardizing data
+2026-04-16 09:01:24 - clean - INFO - Parsing IPOC quarterly data from ipoc_2020_2024.xlsx
+2026-04-16 09:01:26 - clean - INFO - Saved ipoc_quarterly to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/ipoc_quarterly.parquet
+2026-04-16 09:01:26 - clean - INFO - Parsing GEIH from anexo-mercado-laboral-segun-proyecciones-CNPV2018.xlsx
+2026-04-16 09:01:27 - clean - INFO - GEIH parsed rows: 84
+2026-04-16 09:01:27 - clean - INFO - GEIH hoja usada: ocup ramas mes tnal CIIU 4
+2026-04-16 09:01:27 - clean - INFO - GEIH year_row: 12, month_row: 13
+2026-04-16 09:01:27 - clean - INFO - GEIH months sample: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic']
+2026-04-16 09:01:27 - clean - INFO - GEIH month_num sample: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+2026-04-16 09:01:27 - clean - INFO - GEIH valid columns: 84
+2026-04-16 09:01:27 - clean - INFO - GEIH data shape: (22, 85)
+2026-04-16 09:01:27 - clean - INFO - GEIH concept sample: ['ocupados total nacional', 'no informa', 'agricultura, ganadería, caza, silvicultura y pesca', 'suministro de electricidad gas y agua^', 'industria manufacturera', 'construcción', 'comercio y reparación de vehículos', 'alojamiento y servicios de comida', 'transporte y almacenamiento', 'información y comunicaciones']
+2026-04-16 09:01:27 - clean - INFO - GEIH constru matches: 1
+2026-04-16 09:01:27 - clean - INFO - Saved geih_construction_employment to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/geih_construction_employment.parquet
+2026-04-16 09:01:27 - clean - INFO - Parsing IIOC Anexo A3 from anexos_IIOC_IVtrim20.xlsx
+2026-04-16 09:01:27 - clean - INFO - Saved iioc_construction_cost_index to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/iioc_construction_cost_index.parquet
+2026-04-16 09:01:27 - clean - WARNING - Using placeholder parser for fiscal_spending_constants
+2026-04-16 09:01:27 - clean - INFO - ✅ Unified tidy saved to /mnt/d/Universidad/Seminario/proyecto_seminario/data/silver/indicators_tidy.parquet
+2026-04-16 09:01:27 - clean - INFO - Indicators: 7
+2026-04-16 09:01:27 - clean - INFO - Date range: 1999-03-31 00:00:00 to 2024-12-31 23:59:59.999999

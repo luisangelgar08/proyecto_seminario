@@ -76,7 +76,7 @@ def check_time_continuity(df: pd.DataFrame) -> Dict:
     for ind, group in df.groupby('indicator_id'):
         if 'date' in group.columns:
             group = group.sort_values('date')
-            expected_freq = 'Q' if group['frequency'].iloc[0] == 'Trimestral' else 'M' if group['frequency'].iloc[0] == 'Mensual' else 'Y'
+            expected_freq = 'QE-DEC' if group['frequency'].iloc[0] == 'Trimestral' else 'MS' if group['frequency'].iloc[0] == 'Mensual' else 'YE-DEC'
             full_range = pd.date_range(start=group['date'].min(), end=group['date'].max(), freq=expected_freq)
             missing_dates = set(full_range) - set(group['date'])
             gaps[ind] = len(missing_dates)

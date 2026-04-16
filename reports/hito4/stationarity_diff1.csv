@@ -1,0 +1,4 @@
+version,variable,n_obs,adf_stat,adf_pvalue,kpss_stat,kpss_pvalue,stationary_hint
+diff_1,ipoc_total,3,,,,,insuficiente_muestra
+diff_1,iioc_total,3,,,,,insuficiente_muestra
+diff_1,empleo_construccion,3,,,,,insuficiente_muestra

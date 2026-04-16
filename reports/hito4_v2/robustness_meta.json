@@ -1,0 +1,12 @@
+{
+  "main_panel_rows": 24,
+  "main_panel_start": "2015-03-31 23:59:59.999999",
+  "main_panel_end": "2020-12-31 23:59:59.999999",
+  "main_variables": [
+    "iioc_total",
+    "empleo_construccion"
+  ],
+  "ipoc_rows": 20,
+  "ipoc_start": "2020-03-31 23:59:59.999999",
+  "ipoc_end": "2024-12-31 23:59:59.999999"
+}

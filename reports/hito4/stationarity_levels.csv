@@ -1,0 +1,4 @@
+version,variable,n_obs,adf_stat,adf_pvalue,kpss_stat,kpss_pvalue,stationary_hint
+levels,ipoc_total,4,,,,,insuficiente_muestra
+levels,iioc_total,4,,,,,insuficiente_muestra
+levels,empleo_construccion,4,,,,,insuficiente_muestra

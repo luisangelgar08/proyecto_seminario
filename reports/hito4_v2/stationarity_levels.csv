@@ -1,0 +1,3 @@
+version,variable,n_obs,adf_stat,adf_pvalue,kpss_stat,kpss_pvalue,stationary_hint
+levels,iioc_total,24,-0.14399601818315688,0.944876188090206,0.5000000000000008,0.04166666666666649,no_estacionaria
+levels,empleo_construccion,24,2.5697267608161245,0.9990689393239671,0.26723252973761696,0.1,mixta

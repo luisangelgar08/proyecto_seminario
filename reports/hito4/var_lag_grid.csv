@@ -1,0 +1,5 @@
+lag,nobs,aic,bic,hqic,fpe,stable,status,error
+1,2.0,-217.44301077196067,-225.284127688601,-233.84116581894065,-6.102815978355213e-99,False,ok,
+2,,,,,,,fail,"x contains one or more constant columns. Column(s) 0, 1, 2, 3, 4, 5 are constant. Adding a constant with trend='c' is not allowed."
+3,,,,,,,fail,zero-size array to reduction operation maximum which has no identity
+4,,,,,,,fail,zero-size array to reduction operation maximum which has no identity

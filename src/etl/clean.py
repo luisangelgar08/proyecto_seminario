@@ -15,6 +15,7 @@ import pandas as pd
 import numpy as np
 import logging
 from datetime import datetime
+from sklearn import logger
 import yaml
 
 from .utils import setup_logging, write_parquet, create_run_manifest, save_run_manifest
@@ -51,7 +52,43 @@ INDICATOR_TAXONOMY = {
     "construction_production_value": "pib_const"
 }
 
+MONTH_MAP = {
+    "enero": 1, "ene": 1,
+    "febrero": 2, "feb": 2,
+    "marzo": 3, "mar": 3,
+    "abril": 4, "abr": 4,
+    "mayo": 5, "may": 5,
+    "junio": 6, "jun": 6,
+    "julio": 7, "jul": 7,
+    "agosto": 8, "ago": 8,
+    "septiembre": 9, "sep": 9, "setiembre": 9, "set": 9,
+    "octubre": 10, "oct": 10,
+    "noviembre": 11, "nov": 11,
+    "diciembre": 12, "dic": 12,
+}
 
+QUARTER_MAP = {
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "i": 1,
+    "ii": 2,
+    "iii": 3,
+    "iv": 4,
+    "I": 1,
+    "II": 2,
+    "III": 3,
+    "IV": 4,
+    "t1": 1,
+    "t2": 2,
+    "t3": 3,
+    "t4": 4,
+    "trimestre 1": 1,
+    "trimestre 2": 2,
+    "trimestre 3": 3,
+    "trimestre 4": 4,
+}
 # ============================================================================
 # Helper Functions
 # ============================================================================
@@ -95,10 +132,80 @@ def harmonize_indicator_names(df: pd.DataFrame, source_name: str) -> pd.DataFram
     df['indicator_id'] = INDICATOR_TAXONOMY.get(source_name, source_name)
     return df
 
+## funcion nueva
+def parse_ipoc_quarterly(file_path, logger):
+    logger.info(f"Parsing IPOC quarterly data from {file_path.name}")
+
+    df = pd.read_excel(file_path, sheet_name="Sheet1")
+
+    # limpiar nombres de columnas
+    df.columns = [str(c).strip() for c in df.columns]
+
+    required_cols = ["Año", "Trimestre"]
+    missing = [c for c in required_cols if c not in df.columns]
+    if missing:
+        raise ValueError(f"Faltan columnas requeridas en IPOC: {missing}")
+
+    value_cols = [c for c in df.columns if c not in ["Año", "Trimestre"]]
+    if not value_cols:
+        raise ValueError("No se encontraron columnas de valores en IPOC")
+
+    tidy = df.melt(
+        id_vars=["Año", "Trimestre"],
+        value_vars=value_cols,
+        var_name="indicator",
+        value_name="value"
+    )
+
+    tidy = tidy.rename(columns={
+        "Año": "year",
+        "Trimestre": "quarter"
+    })
+
+    tidy["year"] = pd.to_numeric(tidy["year"], errors="coerce")
+    tidy["quarter"] = pd.to_numeric(tidy["quarter"], errors="coerce")
+    tidy["value"] = pd.to_numeric(tidy["value"], errors="coerce")
+
+    tidy = tidy.dropna(subset=["year", "quarter", "value"]).copy()
+
+    tidy["year"] = tidy["year"].astype(int)
+    tidy["quarter"] = tidy["quarter"].astype(int)
+
+    # fecha trimestral
+    tidy["date"] = pd.PeriodIndex(
+        tidy["year"].astype(int).astype(str) + "Q" + tidy["quarter"].astype(int).astype(str),
+        freq="Q"
+    ).to_timestamp(how="end")
+
+    tidy["indicator"] = (
+        tidy["indicator"]
+            .astype(str)
+            .str.strip()
+            .str.lower()
+            .str.replace(" ", "_", regex=False)
+    )
+
+    tidy["source"] = "IPOC"
+    tidy["unit"] = "Índice"
+    tidy["frequency"] = "Trimestral"
+    tidy["indicator_id"] = tidy["indicator"]
+
+    tidy = tidy[
+        ["date", "year", "quarter", "indicator", "value", "source", "unit", "frequency", "indicator_id"]
+    ].sort_values(["date", "indicator"]).reset_index(drop=True)
+    print("IPOC columns:", tidy.columns.tolist())
+    print(tidy.head(5).to_string())
+    print(tidy["indicator_id"].value_counts(dropna=False)) 
+ 
+    return tidy
+
+##---------------------------------
 
 def parse_source(source: Dict, logger: logging.Logger) -> pd.DataFrame:
     """Parse a single source based on config."""
     file_path = RAW / source['file_path']
+    if source["name"] == "ipoc_quarterly":
+        return parse_ipoc_quarterly(file_path, logger)
     if not file_path.exists():
         logger.warning(f"File {file_path} not found, skipping {source['name']}")
         return pd.DataFrame()
@@ -166,7 +273,7 @@ def parse_source(source: Dict, logger: logging.Logger) -> pd.DataFrame:
 def parse_fbcf_an112_other_buildings(file_path: Path, logger: logging.Logger) -> pd.DataFrame:
     """Parse FBCF (Fixed Capital Formation) - AN112 asset class."""
     logger.info(f"Parsing FBCF AN112 from {file_path.name}")
-    df = pd.read_excel(file_path, sheet_name="Cuadro 5", header=None)
+    df = pd.read_excel(file_path, sheet_name="Sheet1", header=None)
     def is_year_header_row(i: int) -> bool:
         c0 = str(df.iat[i, 0]).strip()
         c1 = str(df.iat[i, 1]).strip()
@@ -213,43 +320,83 @@ def parse_fbcf_an112_other_buildings(file_path: Path, logger: logging.Logger) ->
 def parse_geih_ocupados_construccion(file_path: Path, logger: logging.Logger) -> pd.DataFrame:
     """Parse GEIH (Labor Force Survey) - Construction Employment."""
     logger.info(f"Parsing GEIH from {file_path.name}")
-    sh = "ocup ramas mes tnal CIIU 4"
+    xls = pd.ExcelFile(file_path)
+    candidate_sheets = [
+        "ocup ramas mes tnal CIIU 4",
+        "ocup ramas mes total CIIU 4",
+        "ocup ramas mes tnal",
+        "ocup ramas mes total",
+    ]
+
+    sh = None
+    for s in candidate_sheets:
+        if s in xls.sheet_names:
+            sh = s
+            break
+
+    if sh is None:
+        sh = xls.sheet_names[0]
+        logger.warning(f"No se encontró hoja GEIH esperada; usando {sh}")
+
     df = pd.read_excel(file_path, sheet_name=sh, header=None)
+
     c0 = df.iloc[:, 0].astype(str).str.strip()
     c1_num = pd.to_numeric(df.iloc[:, 1], errors="coerce")
+
     year_row_candidates = df.index[(c0 == "Concepto") & c1_num.notna()].tolist()
     if not year_row_candidates:
         raise ValueError("Could not find Concepto header in GEIH")
+
     year_row = year_row_candidates[0]
     month_row = year_row + 1
     data_start = month_row + 1
+
     years = pd.to_numeric(df.iloc[year_row, 1:], errors="coerce").ffill()
-    months = df.iloc[month_row, 1:].astype(str).str.strip()
+    months = df.iloc[month_row, 1:].astype(str).str.strip().str.lower()
     month_num = months.map(MONTH_MAP)
+
     valid = years.notna() & month_num.notna()
     years_v = years[valid].astype(int).tolist()
     months_v = month_num[valid].astype(int).tolist()
     col_idx = (np.where(valid.values)[0] + 1).tolist()
+
     data = df.iloc[data_start:, [0] + col_idx].copy()
     data = data[data.iloc[:, 0].notna()]
-    concept = data.iloc[:, 0].astype(str).str.strip()
-    row = data.loc[concept == "Construcción"]
+
+    concept = data.iloc[:, 0].astype(str).str.strip().str.lower()
+    row = data.loc[concept.str.contains("constru", na=False)]
+
     if row.empty:
         logger.warning("Construcción row not found in GEIH")
         return pd.DataFrame()
+
     row = row.iloc[0]
     values = pd.to_numeric(row.iloc[1:].values, errors="coerce")
-    dates = [pd.Timestamp(year=y, month=m, day=1) for y, m in zip(years_v, months_v)]
+
     df_out = pd.DataFrame({
-        "date": dates,
+        "date": [pd.Timestamp(year=y, month=m, day=1) for y, m in zip(years_v, months_v)],
         "value": values,
         "year": years_v,
         "month": months_v,
+        "quarter": pd.Series(months_v).apply(lambda m: (m - 1) // 3 + 1).astype(int),
+        "indicator": "empleo_construccion",
         "indicator_id": "empleo_const",
         "source": "geih_construction_employment",
         "unit": "Miles de personas",
         "frequency": "Mensual"
     })
+
+    df_out = df_out.dropna(subset=["date", "value"]).reset_index(drop=True)
+
+    logger.info(f"GEIH parsed rows: {len(df_out)}")
+    logger.info(f"GEIH hoja usada: {sh}")
+    logger.info(f"GEIH year_row: {year_row}, month_row: {month_row}")
+    logger.info(f"GEIH months sample: {months.head(12).tolist()}")
+    logger.info(f"GEIH month_num sample: {month_num.head(12).tolist()}")
+    logger.info(f"GEIH valid columns: {int(valid.sum())}")
+    logger.info(f"GEIH data shape: {data.shape}")
+    logger.info(f"GEIH concept sample: {concept.head(10).tolist()}")
+    logger.info(f"GEIH constru matches: {int(concept.str.contains('constru', na=False).sum())}")
     return df_out
 
 
@@ -287,6 +434,7 @@ def parse_iioc_anexo_a3(file_path: Path, logger: logging.Logger) -> pd.DataFrame
         "value": sub["iioc_total"].values,
         "year": sub["year"].astype(int),
         "quarter": sub["quarter"].astype(int),
+        "indicator": "iioc_total",
         "indicator_id": "iioc",
         "source": "iioc_construction_cost_index",
         "unit": "Índice (base 2018=100)",
@@ -324,7 +472,7 @@ def main():
         tidy.to_parquet(silver_parq, index=False)
         
         logger.info(f"✅ Unified tidy saved to {silver_parq}")
-        logger.info(f"Indicators: {tidy['indicator_id'].nunique()}")
+        logger.info(f"Indicators: {tidy['indicator'].nunique()}")
         logger.info(f"Date range: {tidy['date'].min()} to {tidy['date'].max()}")
         
         return tidy

@@ -1,4 +1,20 @@
-
 sources:
-  - name: TEST
-    file_pattern: '*.abc'
+  - name: ipoc_quarterly
+    file_path: "ipoc_2020_2024.xlsx"
+    file_pattern: "ipoc_2020_2024.xlsx"
+
+  - name: geih_construction_employment
+    file_path: "anexo-mercado-laboral-segun-proyecciones-CNPV2018.xlsx"
+    file_pattern: "anexo-mercado-laboral-segun-proyecciones-CNPV2018.xlsx"
+
+  - name: iioc_construction_cost_index
+    file_path: "anexos_IIOC_IVtrim20.xlsx"
+    file_pattern: "anexos_IIOC_IVtrim20.xlsx"
+
+  - name: fiscal_spending_constants
+    file_path: "anex-GastoConstantes-IVtrim2025.xlsx"
+    file_pattern: "anex-GastoConstantes-IVtrim2025.xlsx"
+    sheet_name: "Cuadro 1"
+    frequency: "Anual"
+    units: "Millones de pesos constantes"
+    keys: ["year"]

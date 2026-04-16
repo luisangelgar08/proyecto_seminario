@@ -1,0 +1,12 @@
+{
+  "input": "data/gold/hito4_panel_main.parquet",
+  "variables": [
+    "iioc_total",
+    "empleo_construccion"
+  ],
+  "n_rows_analysis": 24,
+  "n_rows_diff": 23,
+  "best_lag": 1,
+  "irf_method": "standard_irf",
+  "report_dir": "reports/hito4_v2"
+}

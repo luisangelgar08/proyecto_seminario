@@ -1,0 +1,13 @@
+{
+  "input": "data/gold/hito4_panel.parquet",
+  "date_col": "date",
+  "variables": [
+    "ipoc_total",
+    "iioc_total",
+    "empleo_construccion"
+  ],
+  "n_rows_analysis": 4,
+  "difference_for_var": true,
+  "best_lag_by_aic": 1,
+  "report_dir": "reports/hito4"
+}
